@@ -1,0 +1,156 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --verde:#006a56;
+  }
+.fondo{
+   background-color: #b6422e;
+ 
+}
+
+
+/*navegacion*/
+.nav-bag {
+    background-color: var(--verde);
+  }
+  
+  .navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 768px) {
+    .navegacion-principal {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+  }
+  .navegacion-principal a:hover {
+    background-color: var(--secundario);
+    color: var(--oscuro);
+  }
+  .contenedoruno {
+    max-width: 120rem;
+    margin-top: 0;
+    margin-right: auto;
+    scroll-margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .logo{
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-left: 20px;
+  }
+
+
+  .perfil-container {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    max-width: 400px;
+    background-color: #062445;
+}
+
+.perfil-info {
+    margin-top: 20px;
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h2 {
+    color: #fff1f1;
+    font-size: 24px;
+}
+
+h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0;
+}
+
+.formulario-container {
+  width: 400px;
+  margin: -500px 50px;
+}
+
+.cambiar-contrasena-form {
+  background-color: #062445;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.cambiar-contrasena-form h1 {
+  color: #fff1f1;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cambiar-contrasena-form label {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.cambiar-contrasena-form input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+}
+
+.cambiar-contrasena-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cambiar-contrasena-form button:hover {
+  background-color: #0097a7;
+  color: #fff;
+}

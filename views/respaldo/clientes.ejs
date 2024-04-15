@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1.0">
+    <title>
+       clientes
+    </title>
+    <link rel="stylesheet" href="public/css/admin.css">
+    <style>
+
+        body {
+            
+    background-image: url('public/img/fondo.jpg');
+    background-position: center; 
+    background-size: cover; 
+ 
+
+        }
+ 
+      
+        form {
+            background-color: #fff;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        
+        .form-control {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+ 
+       
+        .form-control label {
+            display: block;
+            margin-bottom: 10px;
+        }
+ 
+       
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            padding: 10px;
+            display: block;
+            width: 95%;
+        }
+ 
+       
+        .form-control input[type="radio"],
+        .form-control input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+        }
+ 
+     
+        button {
+            background-color: #05c46b;
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 21px;
+            display: block;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+  
+<body>
+   
+  <div class="nav-bag">
+  
+    <nav class="navegacion-principal contenedoruno">
+      <img class="logo" src="public/img/logo2.png"> 
+      <a href="/">Inicio</a>
+      <a href="nosotros">Nosotros</a>
+      <a href="api">Nuestra Api </a>
+      <a href="clientes">clientes</a>
+      <img class="logo" src="public/img/logo2.png"> 
+    </nav>
+  </div>
+    <form id="form">
+        <h1 >Contactanos</h1>
+        
+        <div class="form-control">
+            <label for="name" id="label-name">
+                Nombre
+            </label>
+    
+            <input type="text"
+                   id="name"
+                   placeholder="Ingrese su nombre" />
+        </div>
+    
+        <div class="form-control">
+            <label for="email" id="label-email">
+                Correo Electrónico
+            </label>
+    
+            <input type="email"
+                   id="email"
+                   placeholder="Ingrese su correo electrónico" />
+        </div>
+    
+        <div class="form-control">
+            <label for="age" id="label-age">
+                Edad
+            </label>
+    
+            <input type="text"
+                   id="age"
+                   placeholder="Ingrese su edad" />
+        </div>
+    
+        <div class="form-control">
+            <label for="role" id="label-role">
+                ¿Cuál opción mejor te describe?
+            </label>
+             
+            <select name="role" id="role">
+                <option value="estudiante">Estudiante</option>
+                <option value="practicante">Practicante</option>
+                <option value="profesional">
+                    Profesional
+                </option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+    
+        <div class="form-control">
+            <label>
+                ¿Recomendarías sistemsdao a un amigo?
+            </label>
+    
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed">Sí</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed">No</input>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed">Tal vez</input>
+            </label>
+        </div>
+    
+        <div class="form-control">
+            <label>Que es de tu interes
+                <small>(Marca todos los que sean de tu interes)</small>
+            </label>
+            
+            <label for="inp-1">
+                <input type="checkbox"
+                       name="inp">Integración con asistentes de voz</input></label>
+            <label for="inp-2">
+                <input type="checkbox"
+                       name="inp">Google Homeinput></label>
+            <label for="inp-3">
+                <input type="checkbox"
+                       name="inp">Amazon Alexa</input></label>
+            <label for="inp-4">
+                <input type="checkbox"
+                       name="inp">Apple HomeKit</input></label>
+            <label for="inp-5">
+                <input type="checkbox"
+                       name="inp">Ahorro de energía</input></label>
+            <label for="inp-6">
+                <input type="checkbox"
+                       name="inp">Seguridad del hogar</input></label>
+            <label for="inp-7">
+                <input type="checkbox"
+                       name="inp">Escenas y rutinas</input></label>
+            <label for="inp-7">
+                <input type="checkbox"
+                       name="inp">Integración de dispositivos</input></label>
+            <label for="inp-7">
+                <input type="checkbox"
+                       name="inp">Automatización del hogar</input></label>
+            <label for="inp-7">
+                <input type="checkbox"
+                       name="inp">Control remoto</input></label>
+        </div>
+    
+        <div class="form-control">
+            <label for="comment">
+                ¿Cuentanos que tienes en mente?
+            </label>
+    
+            <textarea name="comment" id="comment"
+                placeholder="Ingrese su comentario aquí">
+            </textarea>
+        </div>
+    
+        <button type="submit" value="submit">
+            Enviar
+        </button>
+    </form>
+    
+</body>
+  
+</html>

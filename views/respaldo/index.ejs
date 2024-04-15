@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="public/css/admin.css">
+   
+    <link rel="stylesheet" href="public/css/styleadmin.js">
+
+</head>
+<body class="fondo">
+    
+
+    <div class="nav-bag">
+  
+        <nav class="navegacion-principal contenedoruno">
+            <img class="logo" src="public/img/logo2.png"> 
+          <a href="/">Inicio</a>
+          <!-- <a href="foco">Estatus Foco</a> -->
+          <a href="estado_puerta">Estatus Puerta</a>
+       
+          
+          <% if(login){ %>
+<h4 class="cerrarsesion"> </h4>
+<a class="botoncerrar"href="logout"> <strong>Cerrar sesion</strong></a>
+<%} else{ %>
+    <h1 ><strong><%= nombre %></strong></h1>
+
+<% } %></p>
+<img class="logo" src="public/img/logo2.png"> 
+        </nav>
+      </div>
+
+
+
+    
+      <div class="perfil-container">
+        <h2>Mis Datos</h2>
+        <div class="perfil-info">
+            <% if (login && foto) { %> 
+               
+                <div class="foto-perfil">
+                    <p>Mi foto</p> 
+                    <img src="<%= foto %>" alt="Foto de perfil">
+                </div>
+                <h4>Nombre:</h4><p><%= nombre %></p>
+                <h4>Apellidos:</h4><p><%= lastname %></p>
+                <h4>Correo:</h4><p><%= correo %></p>
+               
+            <% } %>
+        </div>
+    </div>
+
+    
+<div class="formulario-container">
+    <form method="POST" action="/cambiar-contrasena" class="cambiar-contrasena-form">
+        <h1>Cambiar Contraseña</h1>
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="antiguaContrasena">Antigua Contraseña:</label>
+        <input type="password" id="antiguaContrasena" name="antiguaContrasena" required>
+        <i id="mostrarAntiguaContrasena" class="gg-eye" onmousedown="alternarVisibilidadContrasenaa('antiguaContrasena')"></i>
+        <i class="gg-eye-off" onmousedown="alternarVisibilidadContrasenaa('antiguaContrasena')" style="display: none;"></i>
+
+        <label for="nuevaContrasena">Nueva Contraseña:</label>
+        <input type="password" id="nuevaContrasena" name="nuevaContrasena" required>
+        <i id="mostrarContrasena" class="gg-eye" onmousedown="alternarVisibilidadContrasena()"></i>
+        <i class="gg-eye-off" onmousedown="alternarVisibilidadContrasena()" style="display: none;"></i>
+
+        <button type="submit">Restablecer Contraseña</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <% if (typeof alert != "undefined")  { %>
+            <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(() => {
+                window.location = '/<%= ruta %>';
+            });
+            </script>
+        <% } %>
+    
+<script>
+    var intervalo;
+
+    function mostrarContrasena() {
+        var inputContrasena = document.getElementById("nuevaContrasena");
+        var iconoOjo = document.getElementById("mostrarContrasena");
+
+        inputContrasena.type = "text";
+        iconoOjo.classList.add("gg-eye-off");
+
+        intervalo = setInterval(function () {
+            if (!botonMousePresionado()) {
+                ocultarContrasena();
+            }
+        }, 100);
+    }
+ function alternarVisibilidadContrasena() {
+        var inputContrasena = document.getElementById("nuevaContrasena");
+        var iconoOjo = document.getElementById("mostrarContrasena");
+
+        if (inputContrasena.type === "password") {
+            // Si la contraseña está oculta, muéstrala
+            inputContrasena.type = "text";
+            iconoOjo.classList.add("gg-eye-off");
+        } else {
+            // Si la contraseña está visible, ocúltala
+            inputContrasena.type = "password";
+            iconoOjo.classList.remove("gg-eye-off");
+        }
+    }
+</script>
+
+<script>
+    function alternarVisibilidadContrasenaa(idCampo) {
+        var inputContrasena = document.getElementById(idCampo);
+        var iconoOjo = document.getElementById('mostrar' + idCampo);
+
+        if (inputContrasena.type === "password") {
+
+            inputContrasena.type = "text";
+            iconoOjo.classList.add("gg-eye-off");
+        } else {
+            
+            inputContrasena.type = "password";
+            iconoOjo.classList.remove("gg-eye-off");
+        }
+    }
+</script>
+
+
+ 
+
+<!-- Grafica para el estado 'Abierta' -->
+<div style="color: white; width: 500px; height: 400px; margin: 200px 1000px; margin-bottom: 200px;">
+    <canvas id="abiertaChart"></canvas>
+  </div>
+  
+  <!-- Grafica para el estado 'Cerrada' -->
+  <div style="color: white; width: 500px; height: 400px; margin: 200px 1000px; margin-bottom: 200px;">
+    <canvas id="cerradaChart"></canvas>
+  </div>
+  
+  <script>
+    fetch('/api/puerta')
+      .then(response => response.json())
+      .then(data => {
+        const horas = data.map(entry => new Date(entry.hora).toLocaleTimeString());
+        const estatus = data.map(entry => entry.estatus);
+  
+        // Filtrar datos para el estado 'Abierta'
+        const horasAbierta = horas.filter((hora, index) => estatus[index] === 'Abierta');
+        const horasCerrada = horas.filter((hora, index) => estatus[index] === 'Cerrada');
+  
+        // Crear gráficas para el estado 'Abierta' y 'Cerrada'
+        const ctxAbierta = document.getElementById('abiertaChart').getContext('2d');
+        const ctxCerrada = document.getElementById('cerradaChart').getContext('2d');
+  
+        const abiertaChart = new Chart(ctxAbierta, {
+          type: 'line',
+          data: {
+            labels: horasAbierta,
+            datasets: [{
+              label: 'Puerta Abierta',
+              data: new Array(horasAbierta.length).fill(null),
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+  
+        const cerradaChart = new Chart(ctxCerrada, {
+          type: 'line',
+          data: {
+            labels: horasCerrada,
+            datasets: [{
+              label: 'Puerta Cerrada',
+              data: new Array(horasCerrada.length).fill(null),
+              fill: false,
+              borderColor: 'rgb(255, 99, 132)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      })
+      .catch(error => console.error('Error al obtener los datos:', error));
+
+     
+
+</body>
+</html>
+
+
+

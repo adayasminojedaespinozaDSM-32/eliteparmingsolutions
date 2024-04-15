@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="stylesheet" href="public/css/login.css">
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body class="fondo">
+  
+    <div class="nav-bag">
+  
+      <div class="nav-bag">
+  
+        <nav class="navegacion-principal contenedoruno">
+          <img class="logo" src="public/img/logo2.png"> 
+          <a href="/">Inicio</a>
+          <a href="nosotros">Nosotros</a>
+          <!-- <a href="api">Nuestra Api </a> -->
+          <a href="clientes">clientes</a>
+          <img class="logo" src="public/img/logo2.png"> 
+        </nav>
+      </div>
+      </div>
+  <div class="contenedor">
+            
+    <div class="contenedorcentrado">
+        <div class="login">
+            <form action="usuarioregis" method="post" class="form sign-up" enctype="multipart/form-data">
+                
+                <div style="text-align: center;"><h1>Registrate</h1></div>
+
+              <span id="nombre"><strong>Nombre</strong></span>
+             <input type="text" name="nombre" placeholder="Tu nombre" required>
+ 
+             <span id="lastname"><strong>Apellidos</strong></span>
+             <input type="text" name="lastname" placeholder="Tus apellidos"  required>
+
+             <span id="correo"><strong>Correo</strong></span>   
+             <input type="email" name="correo"placeholder="Tu correo"  required>
+              
+             
+            <span id="password"><strong>Contraseña</strong></span>   
+             <input type="password" name="password" placeholder="Tu contraseña" required>
+           
+             <span id="foto"><strong>Foto</strong></span>   
+             <input type="file" name="foto"  required>   
+
+             <div class="input">
+                 
+                <div class="g-recaptcha" data-sitekey="6LfLepIpAAAAALG-Skq7Pz4pzsBYMmZnpdHHdfXh"></div>
+               </div>
+
+             <button type="submit">Registrarse</button>
+            </form>
+            
+        </div>
+        <div class="derecho">
+            <div class="titulo">
+                
+                <strong>Bienvenido a</strong> <hr>
+            <strong>Sistema de Estacionamiento inteligente</strong>
+            </div>
+            
+            <hr>
+            <div class="pie-form">
+                <a href="inicio">¿Ya tienes Cuenta? Iniciar sesion</a>
+                <hr>
+                <img class="logogrande" src="public/img/logo2.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

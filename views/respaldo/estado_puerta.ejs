@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de la puerta</title>
+    <link rel="stylesheet" href="public/css/admin.css">
+    <link rel="stylesheet" href="public/css/puerta.css">
+</head>
+<body class="fondo">
+    <nav class="navegacion-principal contenedoruno">
+        <img class="logo" src="public/img/logo2.png"> 
+        <a href="/">Inicio</a>
+        <!-- <a href="estadofoco">Estatus Foco</a> -->
+        <a href="estado_puerta">Estatus Puerta</a>
+        <img class="logo" src="public/img/logo2.png"> 
+    </nav>
+
+    <div class="card">
+        <h1>Estado de la puerta</h1>
+        <% if (estadoPuerta !== undefined) { %>
+            <% if (estadoPuerta) { %>
+                <p>La puerta está abierta.</p>
+                <img class="puerta" src="public/img/puerta.jpeg" alt="">
+            <% } else { %>
+                <p>La puerta está cerrada.</p>
+                <img class="puertacerrada" src="public/img/logo2.png" alt="">
+            <% } %>
+        <% } else { %>
+            <p>El estado de la puerta no está definido.</p>
+        <% } %>
+        
+        <form action="/estado_puerta" method="post" class="form-container">
+            <input type="hidden" name="estado" value="<%= estadoPuerta !== undefined ? (estadoPuerta ? 'Abierta' : 'Cerrada') : 'Cerrada' %>">
+            <button  onclick="location.reload();"  type="submit" class="submit-button">actualizar </button>
+        </form>
+    </div>
+
+
+    
+  </script> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div>
+  <div style=" width: 500px; height: 400px; position: absolute; top: 20%; left: 62%; ">
+    <canvas id="abiertaChart"></canvas>
+  </div>
+  </div>
+  
+  <div style="width: 500px; height: 400px; position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%);">
+    <canvas id="cerradaChart"></canvas>
+</div>
+
+  
+  <script>
+    fetch('/api/puerta')
+      .then(response => response.json())
+      .then(data => {
+        const horas = data.map(entry => new Date(entry.hora).toLocaleTimeString());
+        const estatus = data.map(entry => entry.estatus);
+  
+        const horasAbierta = horas.filter((hora, index) => estatus[index] === 'Abierta');
+        const horasCerrada = horas.filter((hora, index) => estatus[index] === 'Cerrada');
+  
+        
+        const ctxAbierta = document.getElementById('abiertaChart').getContext('2d');
+        const ctxCerrada = document.getElementById('cerradaChart').getContext('2d');
+  
+        const abiertaChart = new Chart(ctxAbierta, {
+          type: 'line',
+          data: {
+            labels: horasAbierta,
+            datasets: [{
+              label: 'Puerta Abierta',
+              data: new Array(horasAbierta.length).fill(null),
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+  
+        const cerradaChart = new Chart(ctxCerrada, {
+          type: 'line',
+          data: {
+            labels: horasCerrada,
+            datasets: [{
+              label: 'Puerta Cerrada',
+              data: new Array(horasCerrada.length).fill(null),
+              fill: false,
+              borderColor: 'rgb(255, 99, 132)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      })
+      .catch(error => console.error('Error al obtener los datos:', error));
+  </script>
+    
+</body>
+</html>

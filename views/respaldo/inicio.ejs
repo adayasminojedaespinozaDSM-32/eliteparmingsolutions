@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="stylesheet" href="public/css/login.css">
+</head>
+<body class="fondo">
+
+  <div class="nav-bag">
+  
+    <nav class="navegacion-principal contenedoruno">
+      <img class="logo" src="public/img/logo2.png"> 
+      <a href="/">Inicio</a>
+      <a href="nosotros">Nosotros</a>
+      <a href="api">Nuestra Api </a>
+      <a href="clientes">clientes</a>
+      <img class="logo" src="public/img/logo2.png"> 
+    </nav>
+  </div>
+  
+  
+  <div class="contenedor">
+            
+    <div class="contenedorcentrado" method="post" class="form sign-up" enctype="multipart/form-data">
+         
+        <div class="login">
+            <form action="/auth" method="post">
+                <div style="text-align: center;"><h1>Iniciar Sesion</h1></div>
+              <span id="correo"><strong>Correo</strong></span>
+             <input type="text" name="correo" required>
+ 
+             <span id="password"><strong>Contraseña</strong></span>
+             <input type="password" name="password" required>
+
+             <button type="submit">Iniciar sesión</button>
+            </form>
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <% if (typeof alert != "undefined")  { %>
+         <script>
+         Swal.fire({
+           title:'<%= alertTitle %>',
+           text:'<%= alertMessage %>',
+           icon:'<%= alertIcon %>',
+           showConfirmButton: <%= showConfirmButton %>,
+           timer: <%= timer %>
+         }).then(()=>{
+           window.location='/<%= ruta %>'
+         })
+         </script>
+        <% } %>
+
+        <div class="derecho">
+            <div class="titulo">
+                <strong>Bienvenido a</strong> <hr>
+            <strong>Sitema de Estacionamiento inteligente </strong>
+            </div>
+            
+            <hr>
+            <div class="pie-form">
+                
+                <a href="registrar">¿No tienes Cuenta? Registrate</a>
+                <hr>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

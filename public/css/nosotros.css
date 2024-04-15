@@ -1,0 +1,85 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --verde:#006a56;
+  }
+.fondo{
+    background-image: url('../img/fondo.jpg');
+    background-position: center; 
+    background-size: cover; 
+ 
+}
+/*navegacion*/
+.nav-bag {
+    background-color: var(--secundario);
+  }
+  
+  .navegacion-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 768px) {
+    .navegacion-principal {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .navegacion-principal a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+  }
+  .navegacion-principal a:hover {
+    background-color: var(--secundario);
+    color: var(--oscuro);
+  }
+
+  
+  .logo{
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-left: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white; /* Letras blancas */
+    text-align: center;
+}
+
+/* Estilos para los recuadros */
+.card {
+    border: 10px solid #02677b;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #1f653f; 
+    text-align: center;
+    font-size: 25px;
+}
+.card a {
+    font-size: 25px;
+   color: #008cff;
+    text-align: center;
+}
+.card-body {
+    padding: 20px;
+    color: rgb(0, 0, 0); /* Letras blancas */
+    text-align: center;
+}
+.imagenlogofond{
+    margin: 10px 430px; 
+    width: 800px;
+    height: 200px;
+}
